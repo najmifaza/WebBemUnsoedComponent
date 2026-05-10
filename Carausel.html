@@ -5,7 +5,7 @@
   rel="stylesheet"
 />
 
-<section id="logo-modern">
+<section id="filosofi-warna">
   <!-- Background Glow -->
   <div class="bg-orb orb-1"></div>
   <div class="bg-orb orb-2"></div>
@@ -153,6 +153,89 @@
       </div>
     </div>
   </div>
+
+  <div class="filosofi-orb filosofi-orb-1"></div>
+  <div class="filosofi-orb filosofi-orb-2"></div>
+
+  <div class="filosofi-shell">
+    <div class="filosofi-heading">
+      <h2 id="filosofi-title">Filosofi Warna</h2>
+      <p>
+        Palet Kausa Cipta merepresentasikan keteguhan, kreativitas, dan
+        keterbukaan dalam merajut gerakan mahasiswa yang kolaboratif.
+      </p>
+    </div>
+
+    <div class="filosofi-panel">
+      <div class="warna-tabs" role="tablist" aria-label="Pilih filosofi warna">
+        <button
+          class="warna-tab is-active"
+          type="button"
+          data-warna="#0b1838"
+          data-title="Deep Navy"
+          data-hex="#0B1838"
+          data-desc="Melambangkan kedalaman prinsip, ketangguhan, dan integritas yang menjadi ruh organisasi."
+        >
+          <span class="warna-tab-dot" style="--warna: #0b1838"></span>
+          Deep Navy
+        </button>
+
+        <button
+          class="warna-tab"
+          type="button"
+          data-warna="#4e4177"
+          data-title="Muted Purple"
+          data-hex="#4E4177"
+          data-desc="Menunjukkan ruang gerak kolektif yang inklusif serta sentuhan imajinasi dalam berinovasi."
+        >
+          <span class="warna-tab-dot" style="--warna: #4e4177"></span>
+          Muted Purple
+        </button>
+
+        <button
+          class="warna-tab"
+          type="button"
+          data-warna="#3a609f"
+          data-title="Stellar Blue"
+          data-hex="#3A609F"
+          data-desc="Mencerminkan kepercayaan, komunikasi efektif, dan tata kelola yang profesional."
+        >
+          <span class="warna-tab-dot" style="--warna: #3a609f"></span>
+          Stellar Blue
+        </button>
+
+        <button
+          class="warna-tab"
+          type="button"
+          data-warna="#c8dcf5"
+          data-title="Cloud Blue"
+          data-hex="#C8DCF5"
+          data-desc="Melambangkan keterbukaan, kejernihan ide, dan kebermanfaatan sebagai tujuan akhir."
+        >
+          <span class="warna-tab-dot" style="--warna: #c8dcf5"></span>
+          Cloud Blue
+        </button>
+      </div>
+
+      <div class="warna-detail" aria-live="polite">
+        <div class="warna-detail-dot" data-role="dot"></div>
+        <div class="warna-copy">
+          <h3 data-role="title">
+            Deep Navy <span data-role="hex">#0B1838</span>
+          </h3>
+          <p data-role="desc">
+            Melambangkan kedalaman prinsip, ketangguhan, dan integritas yang
+            menjadi ruh organisasi.
+          </p>
+        </div>
+      </div>
+
+      <div class="warna-note">
+        <strong>Gradasi Warna:</strong> transisi dari Kausa ke Cipta
+        menggambarkan perubahan yang bertahap, terstruktur, dan berkelanjutan.
+      </div>
+    </div>
+  </div>
 </section>
 
 <style>
@@ -174,32 +257,59 @@
     font-family: "Montserrat", sans-serif;
   }
 
-  #logo-modern {
+  #filosofi-warna {
     position: relative;
     overflow: hidden;
     padding: 100px 20px;
-    background: #ffffff;
+    background:
+      radial-gradient(
+        circle at top left,
+        rgba(122, 154, 204, 0.12),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at bottom right,
+        rgba(74, 90, 141, 0.08),
+        transparent 35%
+      ),
+      linear-gradient(135deg, #ffffff 0%, #fafafa 50%, #ffffff 100%);
+  }
+
+  #filosofi-warna::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(228, 228, 231, 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(228, 228, 231, 0.35) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at center, black, transparent 90%);
+    pointer-events: none;
   }
 
   /* Background Orbs */
   .bg-orb {
-    display: none;
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(80px);
+    opacity: 0.16;
+    z-index: 0;
   }
 
   .orb-1 {
     width: 280px;
     height: 280px;
-    background: #b6c6ff;
+    background: #4a5a8d;
     top: -60px;
-    left: -80px;
+    right: -80px;
   }
 
   .orb-2 {
     width: 260px;
     height: 260px;
-    background: #d5b7ff;
+    background: #7a9acc;
     bottom: -80px;
-    right: -60px;
+    left: -60px;
   }
 
   .logo-shell {
@@ -253,7 +363,7 @@
 
   .logo-swiper-modern {
     overflow: visible;
-    padding-bottom: 92px;
+    padding-bottom: 20px;
   }
 
   .logo-swiper-modern .swiper-slide {
@@ -293,10 +403,7 @@
       );
     border: 1px solid rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(24px) saturate(160%);
-    box-shadow:
-      0 22px 54px rgba(79, 77, 154, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9),
-      inset 0 -20px 40px rgba(79, 77, 154, 0.04);
+    box-shadow: none;
     transition:
       transform 0.45s ease,
       box-shadow 0.45s ease,
@@ -324,31 +431,19 @@
     position: absolute;
     inset: auto -20% -35% -20%;
     height: 180px;
-    background: linear-gradient(
-      180deg,
-      rgba(142, 168, 234, 0),
-      rgba(142, 168, 234, 0.2)
-    );
-    filter: blur(18px);
-    pointer-events: none;
+    display: none;
   }
 
   .glass-card:hover {
     transform: translateY(-10px);
-    box-shadow:
-      0 32px 72px rgba(79, 77, 154, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.95),
-      inset 0 -24px 48px rgba(79, 77, 154, 0.05);
+    box-shadow: none;
   }
 
   /* Active Slide */
   .swiper-slide-active .glass-card {
     transform: scale(1.03);
     border: 1px solid rgba(142, 168, 234, 0.52);
-    box-shadow:
-      0 36px 90px rgba(79, 77, 154, 0.2),
-      0 0 0 1px rgba(255, 255, 255, 0.62) inset,
-      0 0 0 8px rgba(142, 168, 234, 0.08);
+    box-shadow: none;
   }
 
   /* Image */
@@ -369,8 +464,8 @@
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      rgba(142, 168, 234, 0.28),
-      rgba(79, 77, 154, 0.08),
+      rgba(203, 213, 225, 0.34),
+      rgba(148, 163, 184, 0.12),
       transparent 72%
     );
     z-index: 0;
@@ -392,20 +487,20 @@
   }
 
   /* Text */
-  #logo-modern .logo-slide-content {
+  #filosofi-warna .logo-slide-content {
     position: relative;
     z-index: 2;
     text-align: center;
   }
 
-  #logo-modern .logo-slide-content h3 {
+  #filosofi-warna .logo-slide-content h3 {
     margin: 0 0 14px;
     color: var(--primary);
     font-size: 24px;
     font-weight: 700;
   }
 
-  #logo-modern .logo-slide-content p {
+  #filosofi-warna .logo-slide-content p {
     margin: 0;
     color: #4f4f68;
     font-size: 15px;
@@ -413,7 +508,7 @@
   }
 
   /* Navigation */
-  #logo-modern .custom-nav {
+  #filosofi-warna .custom-nav {
     width: 54px !important;
     height: 54px !important;
     position: absolute;
@@ -433,12 +528,12 @@
     transition: all 0.35s ease;
   }
 
-  #logo-modern .swiper-button-next::after,
-  #logo-modern .swiper-button-prev::after {
+  #filosofi-warna .swiper-button-next::after,
+  #filosofi-warna .swiper-button-prev::after {
     content: none !important;
   }
 
-  #logo-modern .nav-icon {
+  #filosofi-warna .nav-icon {
     width: 18px;
     height: 18px;
     display: block;
@@ -450,38 +545,42 @@
     pointer-events: none;
   }
 
-  #logo-modern .nav-icon-prev {
+  #filosofi-warna .nav-icon-prev {
     transform: rotate(180deg);
   }
 
-  #logo-modern .swiper-button-next.custom-nav {
+  #filosofi-warna .swiper-button-next.custom-nav {
     right: 18px;
   }
 
-  #logo-modern .swiper-button-prev.custom-nav {
+  #filosofi-warna .swiper-button-prev.custom-nav {
     left: 18px;
   }
 
-  #logo-modern .custom-nav:hover {
+  #filosofi-warna .custom-nav:hover {
     transform: translateY(-4px) scale(1.05);
     box-shadow: 0 22px 42px rgba(79, 77, 154, 0.26);
   }
 
   /* Pagination */
-  #logo-modern .swiper-pagination {
-    bottom: -18px !important;
-    margin-top: 20px !important;
+  #filosofi-warna .swiper-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    left: 0 !important;
+    margin-top: 24px !important;
+    z-index: 15;
   }
 
-  #logo-modern .swiper-pagination-bullet {
+  #filosofi-warna .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
-    background: rgba(79, 77, 154, 0.18) !important;
-    opacity: 1;
+    background: rgba(79, 77, 154, 0.35) !important;
+    border: 1px solid rgba(79, 77, 154, 0.55);
+    opacity: 1 !important;
     transition: all 0.35s ease;
   }
 
-  #logo-modern .swiper-pagination-bullet-active {
+  #filosofi-warna .swiper-pagination-bullet-active {
     width: 34px;
     border-radius: 999px;
     background: linear-gradient(
@@ -489,6 +588,277 @@
       var(--secondary),
       var(--primary)
     ) !important;
+  }
+
+  #filosofi-warna {
+    position: relative;
+    overflow: hidden;
+    padding: 110px 20px 120px;
+    background:
+      radial-gradient(
+        circle at top right,
+        rgba(122, 154, 204, 0.14),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at bottom left,
+        rgba(74, 90, 141, 0.09),
+        transparent 36%
+      ),
+      linear-gradient(145deg, #f9fbff 0%, #f3f6ff 55%, #eef3ff 100%);
+  }
+
+  #filosofi-warna::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(228, 232, 243, 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(228, 232, 243, 0.4) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(circle at center, black, transparent 88%);
+    pointer-events: none;
+  }
+
+  .filosofi-orb {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(90px);
+    opacity: 0.22;
+    z-index: 0;
+  }
+
+  .filosofi-orb-1 {
+    width: 320px;
+    height: 320px;
+    top: -90px;
+    right: -80px;
+    background: #4e4177;
+  }
+
+  .filosofi-orb-2 {
+    width: 340px;
+    height: 340px;
+    bottom: -120px;
+    left: -90px;
+    background: #3a609f;
+  }
+
+  .filosofi-shell {
+    max-width: 1120px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    margin-top: 25px;
+  }
+
+  .filosofi-heading {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 42px;
+  }
+
+  .filosofi-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(78, 65, 119, 0.18);
+    background: rgba(255, 255, 255, 0.72);
+    color: #4e4177;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    margin-bottom: 20px;
+  }
+
+  .filosofi-heading h2 {
+    margin: 0;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    color: #24365f;
+    font-weight: 800;
+    text-shadow: 0 6px 18px rgba(58, 96, 159, 0.12);
+  }
+
+  .filosofi-heading p {
+    margin: 18px auto 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #52617f;
+  }
+
+  .filosofi-panel {
+    border-radius: 34px;
+    padding: 28px;
+    background:
+      linear-gradient(
+        140deg,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.48)
+      ),
+      radial-gradient(
+        circle at top right,
+        rgba(200, 220, 245, 0.38),
+        transparent 36%
+      );
+    border: 1px solid rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(18px);
+    box-shadow:
+      0 24px 58px rgba(36, 54, 95, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  }
+
+  .warna-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .warna-tab {
+    flex: 1 1 180px;
+    min-width: 170px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(58, 96, 159, 0.12);
+    background: rgba(255, 255, 255, 0.7);
+    color: #27406d !important;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease,
+      background 0.25s ease;
+  }
+
+  .warna-tab:hover {
+    transform: translateY(-2px);
+    border-color: rgba(58, 96, 159, 0.25);
+    box-shadow: 0 10px 24px rgba(36, 54, 95, 0.08);
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #27406d !important;
+  }
+
+  .warna-tab:focus,
+  .warna-tab:focus-visible,
+  .warna-tab:active {
+    color: #27406d !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    outline: none;
+  }
+
+  .warna-tab.is-active {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(243, 246, 255, 0.88)
+    );
+    border-color: rgba(58, 96, 159, 0.24);
+    box-shadow: 0 14px 30px rgba(36, 54, 95, 0.1);
+  }
+
+  .warna-tab-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+    background: var(--warna);
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    box-shadow: 0 4px 10px rgba(36, 54, 95, 0.16);
+  }
+
+  .warna-detail {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(58, 96, 159, 0.1);
+  }
+
+  .warna-detail-dot {
+    width: 72px;
+    height: 72px;
+    border-radius: 24px;
+    flex: 0 0 auto;
+    background: #0b1838;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 12px 24px rgba(36, 54, 95, 0.12);
+  }
+
+  .warna-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 2px;
+    border-bottom: 1px solid rgba(36, 54, 95, 0.08);
+  }
+
+  .warna-item:last-of-type {
+    border-bottom: none;
+  }
+
+  .warna-dot {
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+    background: var(--warna);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 20px rgba(36, 54, 95, 0.2);
+  }
+
+  .warna-copy h3 {
+    margin: 0 0 6px;
+    color: #1f3058;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: baseline;
+  }
+
+  .warna-copy h3 span {
+    color: #5f6f90;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .warna-copy p {
+    margin: 0;
+    color: #4f5d79;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .warna-note {
+    margin-top: 20px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: rgba(202, 217, 246, 0.28);
+    border: 1px solid rgba(58, 96, 159, 0.18);
+    color: #34466f;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .warna-note strong {
+    color: #24365f;
   }
 
   /* Responsive */
@@ -499,7 +869,7 @@
   }
 
   @media (max-width: 992px) {
-    #logo-modern {
+    #filosofi-warna {
       padding: 88px 18px;
     }
 
@@ -512,12 +882,41 @@
     }
 
     .logo-swiper-modern {
-      padding-bottom: 78px;
+      padding-bottom: 18px;
+    }
+
+    .filosofi-panel {
+      padding: 30px 26px;
+    }
+
+    .warna-tab {
+      min-width: 0;
+      flex-basis: calc(50% - 7px);
+      font-size: 14px;
+      padding: 12px 14px;
+    }
+
+    .warna-detail {
+      padding: 18px;
+    }
+
+    .warna-detail-dot {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+    }
+
+    .warna-copy h3 {
+      font-size: 22px;
+    }
+
+    .warna-copy p {
+      font-size: 17px;
     }
   }
 
   @media (max-width: 768px) {
-    #logo-modern {
+    #filosofi-warna {
       padding: 72px 14px;
     }
 
@@ -556,8 +955,72 @@
     }
 
     /* Allow coverflow neighbors to be visible on mobile */
-    #logo-modern {
+    #filosofi-warna {
       overflow: visible;
+    }
+
+    .filosofi-panel {
+      padding: 22px 18px;
+      border-radius: 24px;
+    }
+
+    .warna-tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .warna-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .warna-tab {
+      flex: 0 0 auto;
+      width: max-content;
+      padding: 11px 12px;
+      border-radius: 16px;
+      font-size: 13px;
+      gap: 10px;
+    }
+
+    .warna-tab-dot {
+      width: 14px;
+      height: 14px;
+    }
+
+    .warna-detail {
+      padding: 16px;
+      gap: 14px;
+      border-radius: 20px;
+    }
+
+    .warna-detail-dot {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+    }
+
+    .warna-copy h3 {
+      font-size: 18px;
+    }
+
+    .warna-copy h3 span {
+      font-size: 13px;
+    }
+
+    .warna-copy p {
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .warna-note {
+      margin-top: 14px;
+      font-size: 13px;
+      padding: 12px 14px;
     }
 
     /* Remove glow/shine effects on mobile for cleaner appearance */
@@ -604,38 +1067,82 @@
       max-height: 160px;
     }
 
-    #logo-modern .logo-slide-content h3 {
+    #filosofi-warna .logo-slide-content h3 {
       font-size: 20px;
       margin-bottom: 10px;
     }
 
-    #logo-modern .logo-slide-content p {
+    #filosofi-warna .logo-slide-content p {
       font-size: 13px;
       line-height: 1.75;
     }
 
-    #logo-modern .custom-nav {
+    #filosofi-warna .custom-nav {
       width: 42px !important;
       height: 42px !important;
       top: 42%;
     }
 
-    #logo-modern .swiper-button-next.custom-nav {
+    #filosofi-warna .swiper-button-next.custom-nav {
       right: 8px;
     }
 
-    #logo-modern .swiper-button-prev.custom-nav {
+    #filosofi-warna .swiper-button-prev.custom-nav {
       left: 8px;
     }
 
-    #logo-modern .nav-icon {
+    #filosofi-warna .nav-icon {
       width: 15px;
       height: 15px;
+    }
+
+    #filosofi-warna {
+      padding: 86px 14px 92px;
+    }
+
+    .filosofi-heading {
+      margin-bottom: 30px;
+    }
+
+    .filosofi-panel {
+      padding: 22px 18px;
+      border-radius: 24px;
+    }
+
+    .warna-item {
+      gap: 12px;
+      padding: 14px 0;
+    }
+
+    .warna-dot {
+      width: 40px;
+      height: 40px;
+    }
+
+    .warna-copy h3 {
+      font-size: 19px;
+      gap: 8px;
+    }
+
+    .warna-copy h3 span {
+      font-size: 14px;
+    }
+
+    .warna-copy p {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .warna-note {
+      margin-top: 16px;
+      font-size: 14px;
+      line-height: 1.65;
+      padding: 14px 15px;
     }
   }
 
   @media (max-width: 480px) {
-    #logo-modern {
+    #filosofi-warna {
       padding: 64px 10px;
     }
 
@@ -658,12 +1165,12 @@
     }
 
     .logo-swiper-modern {
-      padding-bottom: 64px;
+      padding-bottom: 16px;
       overflow: visible;
     }
 
     /* Preserve 3D look on small phones — section follows content height */
-    #logo-modern {
+    #filosofi-warna {
       overflow: visible;
     }
 
@@ -673,7 +1180,7 @@
     }
 
     .logo-swiper-modern {
-      overflow: hidden;
+      overflow: visible;
     }
 
     .glass-card {
@@ -700,30 +1207,85 @@
       max-height: 145px;
     }
 
-    #logo-modern .logo-slide-content h3 {
+    #filosofi-warna .logo-slide-content h3 {
       font-size: 19px;
     }
 
-    #logo-modern .logo-slide-content p {
+    #filosofi-warna .logo-slide-content p {
       font-size: 12.5px;
     }
 
-    #logo-modern .custom-nav {
+    #filosofi-warna .custom-nav {
       width: 38px !important;
       height: 38px !important;
     }
 
-    #logo-modern .swiper-button-next.custom-nav {
+    #filosofi-warna .swiper-button-next.custom-nav {
       right: 6px;
     }
 
-    #logo-modern .swiper-button-prev.custom-nav {
+    #filosofi-warna .swiper-button-prev.custom-nav {
       left: 6px;
     }
 
-    #logo-modern .nav-icon {
+    #filosofi-warna .nav-icon {
       width: 13px;
       height: 13px;
+    }
+
+    .filosofi-badge {
+      padding: 8px 14px;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+    }
+
+    .filosofi-heading p {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .filosofi-panel {
+      padding: 18px 14px;
+      border-radius: 20px;
+    }
+
+    .warna-tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 8px;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .warna-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .warna-tab {
+      flex: 0 0 auto;
+      width: max-content;
+      font-size: 12px;
+    }
+
+    .warna-detail {
+      flex-direction: row;
+    }
+
+    .warna-detail-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+    }
+
+    .warna-copy h3 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .warna-copy p {
+      font-size: 12.5px;
+      line-height: 1.6;
     }
   }
 </style>
@@ -731,9 +1293,13 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     function initSwiper() {
+      if (typeof Swiper === "undefined") {
+        return;
+      }
+
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-      new Swiper("#logo-modern .logo-swiper-modern", {
+      new Swiper("#filosofi-warna .logo-swiper-modern", {
         effect: "coverflow",
         centeredSlides: true,
         slidesPerView: "auto",
@@ -757,15 +1323,60 @@
         },
 
         pagination: {
-          el: "#logo-modern .swiper-pagination",
+          el: "#filosofi-warna .swiper-pagination",
           clickable: true,
         },
 
         navigation: {
-          nextEl: "#logo-modern .swiper-button-next",
-          prevEl: "#logo-modern .swiper-button-prev",
+          nextEl: "#filosofi-warna .swiper-button-next",
+          prevEl: "#filosofi-warna .swiper-button-prev",
         },
       });
+    }
+
+    function initColorTabs() {
+      const colorSection = document.querySelector("#filosofi-warna");
+
+      if (!colorSection) {
+        return;
+      }
+
+      const tabs = Array.from(colorSection.querySelectorAll(".warna-tab"));
+      const detailDot = colorSection.querySelector('[data-role="dot"]');
+      const detailTitle = colorSection.querySelector('[data-role="title"]');
+      const detailHex = colorSection.querySelector('[data-role="hex"]');
+      const detailDesc = colorSection.querySelector('[data-role="desc"]');
+
+      function setActiveTab(tab) {
+        tabs.forEach((item) => {
+          const isActive = item === tab;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-pressed", String(isActive));
+        });
+
+        if (!tab || !detailDot || !detailTitle || !detailHex || !detailDesc) {
+          return;
+        }
+
+        const title = tab.dataset.title || "Deep Navy";
+        const hex = tab.dataset.hex || "#0B1838";
+        const desc = tab.dataset.desc || "";
+
+        detailDot.style.background = tab.dataset.warna || "#0b1838";
+        if (detailTitle.firstChild) {
+          detailTitle.firstChild.nodeValue = `${title} `;
+        }
+        detailHex.textContent = hex;
+        detailDesc.textContent = desc;
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => setActiveTab(tab));
+      });
+
+      setActiveTab(
+        colorSection.querySelector(".warna-tab.is-active") || tabs[0],
+      );
     }
 
     if (typeof Swiper === "undefined") {
@@ -783,5 +1394,7 @@
     } else {
       initSwiper();
     }
+
+    initColorTabs();
   });
 </script>
