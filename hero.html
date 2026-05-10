@@ -152,12 +152,17 @@
         text-align: center;
       }
 
-      .hero-title {
-        font-size: 78px;
-        line-height: 1.02;
-        font-weight: 800;
-        letter-spacing: -4px;
-        margin-bottom: 26px;
+      .hero .hero-title {
+        font-size: clamp(40px, 7vw, 78px) !important;
+        line-height: 1.02 !important;
+        font-weight: 800 !important;
+        letter-spacing: -0.05em;
+        margin: 0 0 26px;
+        text-align: left !important;
+      }
+
+      .hero .hero-title-line {
+        display: block;
       }
 
       .hero-title .gradient {
@@ -477,7 +482,7 @@
         }
 
         .hero-title {
-          font-size: 64px;
+          font-size: 64px !important;
         }
 
         .visual-card {
@@ -510,8 +515,9 @@
         }
 
         .hero-title {
-          font-size: 46px;
+          font-size: 46px !important;
           letter-spacing: -2px;
+          text-align: center !important;
         }
 
         .hero-desc {
@@ -591,7 +597,7 @@
 
       @media (max-width: 480px) {
         .hero-title {
-          font-size: 38px;
+          font-size: 38px !important;
         }
 
         .btn {
@@ -629,9 +635,9 @@
           </div>
 
           <h1 class="hero-title">
-            BADAN<br />
-            EKSEKUTIF<br />
-            <span class="gradient">MAHASISWA</span>
+            <span class="hero-title-line">BADAN</span>
+            <span class="hero-title-line">EKSEKUTIF</span>
+            <span class="hero-title-line gradient">MAHASISWA</span>
           </h1>
 
           <p class="hero-desc">

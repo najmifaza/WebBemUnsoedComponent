@@ -35,7 +35,7 @@
                 />
               </div>
 
-              <div class="slide-content">
+              <div class="logo-slide-content">
                 <h3>Topi Sihir</h3>
                 <p>
                   Topi sebagai “payung” yang menaungi seluruh elemen mahasiswa
@@ -55,7 +55,7 @@
                 />
               </div>
 
-              <div class="slide-content">
+              <div class="logo-slide-content">
                 <h3>K & C</h3>
                 <p>
                   Huruf “K” dan “C” merepresentasikan Kausa Cipta sebagai inti
@@ -75,7 +75,7 @@
                 />
               </div>
 
-              <div class="slide-content">
+              <div class="logo-slide-content">
                 <h3>Enam Lilitan</h3>
                 <p>
                   Melambangkan enam simfoni misi yang saling terhubung dan
@@ -95,7 +95,7 @@
                 />
               </div>
 
-              <div class="slide-content">
+              <div class="logo-slide-content">
                 <h3>Tiga Akar</h3>
                 <p>
                   Merepresentasikan Tridharma Perguruan Tinggi sebagai pondasi
@@ -115,7 +115,7 @@
                 />
               </div>
 
-              <div class="slide-content">
+              <div class="logo-slide-content">
                 <h3>Tongkat Sihir</h3>
                 <p>
                   Simbol kreativitas dan semangat “Merajut Kolaborasi” dalam
@@ -127,8 +127,26 @@
         </div>
 
         <!-- Navigation -->
-        <div class="swiper-button-next custom-nav"></div>
-        <div class="swiper-button-prev custom-nav"></div>
+        <div class="swiper-button-next custom-nav" aria-label="Next slide">
+          <svg
+            class="nav-icon nav-icon-next"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </div>
+        <div class="swiper-button-prev custom-nav" aria-label="Previous slide">
+          <svg
+            class="nav-icon nav-icon-prev"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </div>
 
         <!-- Pagination -->
         <div class="swiper-pagination"></div>
@@ -241,6 +259,14 @@
   .logo-swiper-modern .swiper-slide {
     width: 360px;
     transition: all 0.5s ease;
+  }
+
+  /* Ensure consistent card height so images don't overflow */
+  .logo-swiper-modern .swiper-slide .glass-card {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   /* Card */
@@ -366,18 +392,20 @@
   }
 
   /* Text */
-  .slide-content {
+  #logo-modern .logo-slide-content {
+    position: relative;
+    z-index: 2;
     text-align: center;
   }
 
-  .slide-content h3 {
+  #logo-modern .logo-slide-content h3 {
     margin: 0 0 14px;
     color: var(--primary);
     font-size: 24px;
     font-weight: 700;
   }
 
-  .slide-content p {
+  #logo-modern .logo-slide-content p {
     margin: 0;
     color: #4f4f68;
     font-size: 15px;
@@ -385,9 +413,13 @@
   }
 
   /* Navigation */
-  .custom-nav {
+  #logo-modern .custom-nav {
     width: 54px !important;
     height: 54px !important;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     background: linear-gradient(
       135deg,
@@ -395,38 +427,67 @@
       rgba(79, 77, 154, 0.95)
     );
     color: #fff !important;
+    --swiper-navigation-color: #ffffff;
     backdrop-filter: blur(10px);
     box-shadow: 0 16px 32px rgba(79, 77, 154, 0.18);
     transition: all 0.35s ease;
   }
 
-  .custom-nav:hover {
+  #logo-modern .swiper-button-next::after,
+  #logo-modern .swiper-button-prev::after {
+    content: none !important;
+  }
+
+  #logo-modern .nav-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+  }
+
+  #logo-modern .nav-icon-prev {
+    transform: rotate(180deg);
+  }
+
+  #logo-modern .swiper-button-next.custom-nav {
+    right: 18px;
+  }
+
+  #logo-modern .swiper-button-prev.custom-nav {
+    left: 18px;
+  }
+
+  #logo-modern .custom-nav:hover {
     transform: translateY(-4px) scale(1.05);
     box-shadow: 0 22px 42px rgba(79, 77, 154, 0.26);
   }
 
-  .custom-nav::after {
-    font-size: 18px !important;
-    font-weight: 700;
-  }
-
   /* Pagination */
-  .swiper-pagination {
+  #logo-modern .swiper-pagination {
     bottom: 0 !important;
   }
 
-  .swiper-pagination-bullet {
+  #logo-modern .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
-    background: rgba(79, 77, 154, 0.18);
+    background: rgba(79, 77, 154, 0.18) !important;
     opacity: 1;
     transition: all 0.35s ease;
   }
 
-  .swiper-pagination-bullet-active {
+  #logo-modern .swiper-pagination-bullet-active {
     width: 34px;
     border-radius: 999px;
-    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    background: linear-gradient(
+      90deg,
+      var(--secondary),
+      var(--primary)
+    ) !important;
   }
 
   /* Responsive */
@@ -473,13 +534,64 @@
       line-height: 1.7;
     }
 
+    /* Keep a smaller fixed slide width so coverflow shows neighboring slides */
     .logo-swiper-modern .swiper-slide {
-      width: min(88vw, 320px);
+      width: 320px;
+    }
+
+    .logo-swiper-modern {
+      overflow: visible;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    /* Let the container grow with content on mobile */
+    .logo-shell {
+      height: auto;
+    }
+
+    .slider-wrapper {
+      overflow: visible;
+    }
+
+    /* Allow coverflow neighbors to be visible on mobile */
+    #logo-modern {
+      overflow: visible;
+    }
+
+    /* Remove glow/shine effects on mobile for cleaner appearance */
+    .glass-card::before,
+    .glass-card::after,
+    .image-wrap::before {
+      display: none;
+    }
+
+    .glass-card {
+      box-shadow: none;
+      border: 1px solid rgba(79, 77, 154, 0.04);
+      background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.96),
+        rgba(255, 255, 255, 0.9)
+      );
+    }
+
+    /* Disable hover interactions and active scaling on touch devices */
+    .glass-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Prevent active slide scaling on mobile */
+    .swiper-slide-active .glass-card {
+      transform: none;
+      box-shadow: none;
     }
 
     .glass-card {
       padding: 24px 18px;
       border-radius: 26px;
+      min-height: 0;
     }
 
     .image-wrap {
@@ -491,30 +603,39 @@
       max-height: 160px;
     }
 
-    .slide-content h3 {
+    #logo-modern .logo-slide-content h3 {
       font-size: 20px;
       margin-bottom: 10px;
     }
 
-    .slide-content p {
+    #logo-modern .logo-slide-content p {
       font-size: 13px;
       line-height: 1.75;
     }
 
-    .custom-nav {
+    #logo-modern .custom-nav {
       width: 42px !important;
       height: 42px !important;
       top: 42%;
     }
 
-    .custom-nav::after {
-      font-size: 26px !important;
+    #logo-modern .swiper-button-next.custom-nav {
+      right: 8px;
+    }
+
+    #logo-modern .swiper-button-prev.custom-nav {
+      left: 8px;
+    }
+
+    #logo-modern .nav-icon {
+      width: 15px;
+      height: 15px;
     }
   }
 
   @media (max-width: 480px) {
     #logo-modern {
-      padding: 64px 12px;
+      padding: 64px 10px;
     }
 
     .section-heading {
@@ -537,20 +658,36 @@
 
     .logo-swiper-modern {
       padding-bottom: 52px;
+      overflow: visible;
     }
 
+    /* Preserve 3D look on small phones — section follows content height */
+    #logo-modern {
+      overflow: visible;
+    }
+
+    /* Slightly narrower slides on small phones to preserve 3D look */
     .logo-swiper-modern .swiper-slide {
-      width: min(92vw, 300px);
+      width: 300px;
+    }
+
+    .logo-swiper-modern {
+      overflow: hidden;
     }
 
     .glass-card {
-      padding: 20px 16px;
+      padding: 20px 14px;
       border-radius: 24px;
+      min-height: 0;
     }
 
     .image-wrap {
       height: 180px;
       margin-bottom: 18px;
+    }
+
+    .slider-wrapper {
+      margin-inline: 0;
     }
 
     .image-wrap::before {
@@ -562,21 +699,30 @@
       max-height: 145px;
     }
 
-    .slide-content h3 {
+    #logo-modern .logo-slide-content h3 {
       font-size: 19px;
     }
 
-    .slide-content p {
+    #logo-modern .logo-slide-content p {
       font-size: 12.5px;
     }
 
-    .custom-nav {
+    #logo-modern .custom-nav {
       width: 38px !important;
       height: 38px !important;
     }
 
-    .custom-nav::after {
-      font-size: 24px !important;
+    #logo-modern .swiper-button-next.custom-nav {
+      right: 6px;
+    }
+
+    #logo-modern .swiper-button-prev.custom-nav {
+      left: 6px;
+    }
+
+    #logo-modern .nav-icon {
+      width: 13px;
+      height: 13px;
     }
   }
 </style>
@@ -584,14 +730,16 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     function initSwiper() {
-      new Swiper(".logo-swiper-modern", {
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+      new Swiper("#logo-modern .logo-swiper-modern", {
         effect: "coverflow",
         centeredSlides: true,
         slidesPerView: "auto",
-        loop: true,
+        loop: false,
         speed: 900,
         grabCursor: true,
-        spaceBetween: 10,
+        spaceBetween: isMobile ? 6 : 10,
 
         autoplay: {
           delay: 3500,
@@ -601,20 +749,20 @@
         coverflowEffect: {
           rotate: 0,
           stretch: 0,
-          depth: 180,
-          modifier: 2.2,
-          scale: 0.88,
+          depth: isMobile ? 120 : 180,
+          modifier: isMobile ? 1.6 : 2.2,
+          scale: isMobile ? 0.92 : 0.88,
           slideShadows: false,
         },
 
         pagination: {
-          el: ".swiper-pagination",
+          el: "#logo-modern .swiper-pagination",
           clickable: true,
         },
 
         navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: "#logo-modern .swiper-button-next",
+          prevEl: "#logo-modern .swiper-button-prev",
         },
       });
     }
