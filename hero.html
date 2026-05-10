@@ -49,11 +49,6 @@
           rgba(122, 154, 204, 0.12),
           transparent 30%
         ),
-        radial-gradient(
-          circle at bottom right,
-          rgba(74, 90, 141, 0.08),
-          transparent 35%
-        ),
         linear-gradient(135deg, #ffffff 0%, #fafafa 50%, #ffffff 100%);
     }
 
@@ -86,15 +81,6 @@
       background: #4a5a8d;
       top: -80px;
       left: -80px;
-    }
-
-    .orb-2 {
-      width: 220px;
-      height: 220px;
-      background: #7a9acc;
-      bottom: 0;
-      right: -60px;
-      animation-delay: 2s;
     }
 
     .hero-container {
@@ -217,6 +203,8 @@
 
     .btn-primary:hover {
       transform: translateY(-4px);
+      background: linear-gradient(135deg, #4a5a8d, #5e70a8) !important;
+      color: white !important;
       box-shadow: 0 25px 50px rgba(74, 90, 141, 0.28);
     }
 
@@ -229,7 +217,9 @@
 
     .btn-secondary:hover {
       transform: translateY(-4px);
-      border-color: rgba(74, 90, 141, 0.3);
+      background: rgba(255, 255, 255, 0.95) !important;
+      color: #4a5a8d !important;
+      border-color: rgba(74, 90, 141, 0.3) !important;
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
     }
 
@@ -517,8 +507,8 @@
     }
 
     .logo-track img {
-      height: 48px;
-      margin: 0 40px;
+      height: 72px;
+      margin: 0 50px;
       object-fit: contain;
       filter: grayscale(100%) opacity(0.5);
       transition: all 0.3s ease;
@@ -671,6 +661,15 @@
       .hero-container {
         padding: 70px 24px 30px;
       }
+
+      .logo-runner {
+        padding: 20px 0 10px;
+      }
+
+      .logo-track img {
+        height: 42px;
+        margin: 0 20px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -702,7 +701,6 @@
   <section class="hero">
     <!-- Background Orbs -->
     <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
 
     <div class="hero-container">
       <!-- LEFT -->
@@ -783,46 +781,160 @@
       <div class="logo-track-container">
         <div class="logo-track">
           <!-- First set of 19 logos -->
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+
           <!-- Second set of 19 logos for seamless looping -->
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
-          <img src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png" alt="Logo BEM" />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/04/Kausa-Cipta-768x918.png"
+            alt="Logo BEM"
+          />
         </div>
       </div>
     </div>
