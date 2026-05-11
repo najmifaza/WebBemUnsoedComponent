@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NUM✕DUEL — Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body class="game-body">
+  <div class="plasma-bg">
+    <div class="plasma-orb orb-1"></div>
+    <div class="plasma-orb orb-2"></div>
+    <div class="plasma-orb orb-3"></div>
+    <div class="plasma-orb orb-4"></div>
+  </div>
+
+  <section id="phase-setup" class="phase active">
+    <div id="setup-p1" class="setup-scene active">
+      <a class='back-link' href='/'>← Beranda</a>
+      <div class="setup-player-label p1-label">PLAYER 1</div>
+      <h2 class="setup-headline">Angka Rahasiamu?</h2>
+      <p class="setup-hint-text">3 digit unik · jangan sampai lawan melihat!</p>
+      <div class="digit-float-row">
+        <span class="digit-slot" id="ds-p1-0">_</span><span class="digit-sep">·</span>
+        <span class="digit-slot" id="ds-p1-1">_</span><span class="digit-sep">·</span>
+        <span class="digit-slot" id="ds-p1-2">_</span>
+      </div>
+      <input type="text" id="input-p1" class="ghost-input" maxlength="3" placeholder="___" inputmode="numeric"
+        autocomplete="off" />
+      <div class="error-ghost" id="error-p1"></div>
+      <button class="energy-btn" id="btn-p1-confirm">KONFIRMASI</button>
+    </div>
+
+    <div id="setup-transition" class="setup-scene hidden">
+      <div class="transition-lock">🔒</div>
+      <h2 class="transition-msg">Angka P1 Tersimpan.</h2>
+      <p class="transition-sub">Serahkan ke <strong>Player 2</strong><br />pastikan P1 tidak melihat layar!</p>
+      <button class="energy-btn" id="btn-pass-to-p2">P2 SIAP →</button>
+    </div>
+
+    <div id="setup-p2" class="setup-scene hidden">
+      <a class='back-link' href='/'>← Beranda</a>
+      <div class="setup-player-label p2-label">PLAYER 2</div>
+      <h2 class="setup-headline">Angka Rahasiamu?</h2>
+      <p class="setup-hint-text">3 digit unik · jangan sampai lawan melihat!</p>
+      <div class="digit-float-row">
+        <span class="digit-slot" id="ds-p2-0">_</span><span class="digit-sep">·</span>
+        <span class="digit-slot" id="ds-p2-1">_</span><span class="digit-sep">·</span>
+        <span class="digit-slot" id="ds-p2-2">_</span>
+      </div>
+      <input type="text" id="input-p2" class="ghost-input" maxlength="3" placeholder="___" inputmode="numeric"
+        autocomplete="off" />
+      <div class="error-ghost" id="error-p2"></div>
+      <button class="energy-btn" id="btn-p2-confirm">MULAI GAME</button>
+    </div>
+  </section>
+
+  <section id="phase-game" class="phase hidden">
+    <div class="game-layout">
+      <header class="game-header">
+        <button class="reset-node" id="btn-reset-game" title="Reset Game">↺</button>
+        <div class="player-orb p1-orb">
+          <span class="porb-name">P1</span>
+          <div class="porb-dots" id="dots-p1"><span class="pdot"></span><span class="pdot"></span><span
+              class="pdot"></span></div>
+        </div>
+        <div class="turn-blast">
+          <span class="tb-giliran">GILIRAN</span>
+          <span class="tb-name" id="turn-player-name">PLAYER 1</span>
+        </div>
+        <div class="player-orb p2-orb">
+          <span class="porb-name">P2</span>
+          <div class="porb-dots" id="dots-p2"><span class="pdot"></span><span class="pdot"></span><span
+              class="pdot"></span></div>
+        </div>
+      </header>
+
+      <main class="game-main" id="guess-zone">
+        <p class="ga-prompt" id="guess-prompt">Tebak angka rahasia Player 2:</p>
+        <div class="ga-digit-row">
+          <span class="ga-slot" id="gs-0">_</span><span class="ga-sep">·</span>
+          <span class="ga-slot" id="gs-1">_</span><span class="ga-sep">·</span>
+          <span class="ga-slot" id="gs-2">_</span>
+        </div>
+        <input type="text" id="input-guess" class="ghost-input guess-ghost" maxlength="3" placeholder="___"
+          inputmode="numeric" autocomplete="off" />
+        <div class="error-ghost" id="error-guess"></div>
+        <button class="energy-btn guess-btn" id="btn-submit-guess">TEBAK!</button>
+      </main>
+
+      <aside class="game-log">
+        <div class="trail-label">Riwayat: <span id="log-count">0 tebakan</span></div>
+        <div class="trail-stream" id="log-list">
+          <div class="trail-empty">belum ada tebakan...</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div id="win-screen" class="win-screen hidden">
+    <div class="win-plasma"></div>
+    <div id="win-confetti-layer"></div>
+    <div class="win-content">
+      <div class="win-trophy-big">🏆</div>
+      <div class="win-player-name" id="win-title">PLAYER 1</div>
+      <div class="win-sub">MENANG!</div>
+      <div class="win-secret-reveal">
+        Angka rahasia lawan: <span class="win-secret-num" id="win-secret">—</span>
+      </div>
+      <div class="win-stat" id="win-stats"></div>
+      <div class="win-actions">
+        <button class="energy-btn" id="btn-play-again">MAIN LAGI</button>
+        <a class='win-home-link' href='/'>← Kembali ke Beranda</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
