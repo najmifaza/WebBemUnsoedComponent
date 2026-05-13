@@ -35,24 +35,35 @@
 
       .navbar-wrapper {
         width: 100%;
-        padding: 20px;
+        padding: 18px;
         position: fixed;
         top: 0;
         left: 0;
         z-index: 999;
+
+        transition: padding 0.28s ease;
+      }
+
+      .navbar-wrapper.is-scrolled {
+        padding: 10px;
       }
 
       .navbar {
-        max-width: 1280px;
+        width: 100%;
+        max-width: 1320px;
         margin: auto;
 
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        padding: 16px 28px;
+        padding: 12px 22px;
 
-        border-radius: 28px;
+        border-radius: 9999px;
+
+        transition:
+          padding 0.28s ease,
+          max-width 0.28s ease;
 
         /* LIQUID GLASS */
         background: rgba(255, 255, 255, 0.18);
@@ -65,6 +76,11 @@
         box-shadow:
           0 8px 32px rgba(31, 38, 135, 0.15),
           inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+
+      .navbar-wrapper.is-scrolled .navbar {
+        max-width: 1180px;
+        padding: 8px 14px;
       }
 
       /* =========================
@@ -102,6 +118,22 @@
         gap: 6px;
       }
 
+      .nav-caret {
+        width: 14px;
+        height: 14px;
+        flex: 0 0 auto;
+        display: inline-block;
+        pointer-events: none;
+      }
+
+      .nav-caret path {
+        stroke: currentColor;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
       .nav-link:hover {
         color: #4a5a8d;
       }
@@ -123,12 +155,12 @@
 
         border-radius: 22px;
 
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.16);
 
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
 
-        border: 1px solid rgba(255, 255, 255, 0.38);
+        border: 1px solid rgba(255, 255, 255, 0.28);
 
         box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
 
@@ -140,6 +172,7 @@
       }
 
       .nav-item:hover .dropdown {
+        background: rgba(255, 255, 255, 0.92);
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
@@ -159,7 +192,7 @@
       }
 
       .dropdown a:hover {
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.22);
         color: #4a5a8d;
         transform: translateX(4px);
       }
@@ -197,7 +230,20 @@
 
       @media (max-width: 992px) {
         .navbar {
-          padding: 16px 20px;
+          padding: 10px 14px;
+          max-width: 100%;
+        }
+
+        .navbar-wrapper {
+          padding: 12px;
+        }
+
+        .navbar-wrapper.is-scrolled {
+          padding: 8px 12px;
+        }
+
+        .navbar-wrapper.is-scrolled .navbar {
+          max-width: 100%;
         }
 
         .logo img {
@@ -239,6 +285,8 @@
         }
 
         .nav-menu.active {
+          background: rgba(255, 255, 255, 0.92);
+          border: 1px solid rgba(255, 255, 255, 0.35);
           opacity: 1;
           visibility: visible;
           transform: translateY(0);
@@ -268,6 +316,7 @@
         }
 
         .nav-item.active .dropdown {
+          background: rgba(255, 255, 255, 0.92);
           display: block;
         }
       }
@@ -311,7 +360,14 @@
           <li class="nav-item mobile-dropdown">
             <a href="#" class="nav-link">
               Profil
-              <span>▼</span>
+              <svg
+                class="nav-caret"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
             </a>
 
             <div class="dropdown">
@@ -328,7 +384,14 @@
           <li class="nav-item mobile-dropdown">
             <a href="#" class="nav-link">
               Layanan Mahasiswa
-              <span>▼</span>
+              <svg
+                class="nav-caret"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
             </a>
 
             <div class="dropdown">
@@ -347,7 +410,14 @@
           <li class="nav-item mobile-dropdown">
             <a href="#" class="nav-link">
               Hubungi Kami
-              <span>▼</span>
+              <svg
+                class="nav-caret"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
             </a>
 
             <div class="dropdown">
@@ -363,6 +433,18 @@
     </div>
 
     <script>
+      // NAVBAR SHRINK ON SCROLL
+      const navbarWrapper = document.querySelector(".navbar-wrapper");
+      const setNavbarScrollState = () => {
+        if (!navbarWrapper) return;
+        navbarWrapper.classList.toggle("is-scrolled", window.scrollY > 8);
+      };
+
+      setNavbarScrollState();
+      window.addEventListener("scroll", setNavbarScrollState, {
+        passive: true,
+      });
+
       // MOBILE MENU
       const menuToggle = document.getElementById("menuToggle");
       const navMenu = document.getElementById("navMenu");
