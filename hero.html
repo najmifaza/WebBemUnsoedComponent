@@ -654,6 +654,31 @@
         padding: 0 24px 60px;
       }
 
+      /* Mobile stats carousel (swipe) */
+      .stats-grid {
+        display: flex;
+        grid-template-columns: none;
+        gap: 16px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 24px;
+        padding: 6px 0 14px;
+      }
+
+      .stats-grid::-webkit-scrollbar {
+        height: 0;
+      }
+
+      .stat-card {
+        flex: 0 0 86%;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+
       .stat-card {
         text-align: center;
       }
@@ -697,6 +722,10 @@
 
       .hero-badge {
         padding: 8px 14px;
+      }
+
+      .stat-card {
+        flex-basis: 92%;
       }
     }
   </style>
@@ -773,7 +802,7 @@
         </div>
 
         <div class="stat-card">
-          <div class="stat-number">25+</div>
+          <div class="stat-number">140+</div>
           <div class="stat-label">Program Kerja Strategis</div>
         </div>
 
