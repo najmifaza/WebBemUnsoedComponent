@@ -1,0 +1,855 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kementerian BEM Unsoed</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #fff;
+      color: #09090b;
+    }
+
+    /* =========================
+          SECTION
+        ========================= */
+
+    .kementerian-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 60px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+      position: relative;
+    }
+
+    /* Subtle background glow behind header */
+    .section-header::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(
+        circle,
+        rgba(74, 90, 141, 0.06),
+        rgba(122, 154, 204, 0.03) 40%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .section-badge {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(74, 90, 141, 0.2);
+      background: linear-gradient(
+        135deg,
+        rgba(74, 90, 141, 0.06),
+        rgba(255, 255, 255, 0.8)
+      );
+      backdrop-filter: blur(14px);
+      margin-bottom: 28px;
+      box-shadow:
+        0 4px 16px rgba(74, 90, 141, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    .section-badge .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #4a5a8d;
+      animation: pulse 2s infinite;
+    }
+
+    .section-badge span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #4a5a8d;
+    }
+
+    .section-title {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(34px, 5.5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    .section-title .gradient {
+      background: linear-gradient(135deg, #4a5a8d, #7a9acc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-desc {
+      position: relative;
+      z-index: 1;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #6b7280;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* Decorative divider */
+    .header-divider {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+      margin-bottom: 0;
+    }
+
+    .header-divider::before,
+    .header-divider::after {
+      content: "";
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(74, 90, 141, 0.25),
+        transparent
+      );
+    }
+
+    .header-divider::before {
+      width: 80px;
+      background: linear-gradient(
+        to left,
+        rgba(74, 90, 141, 0.25),
+        transparent
+      );
+    }
+
+    .header-divider::after {
+      width: 80px;
+      background: linear-gradient(
+        to right,
+        rgba(74, 90, 141, 0.25),
+        transparent
+      );
+    }
+
+    .header-divider .divider-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4a5a8d;
+      flex-shrink: 0;
+    }
+
+    /* =========================
+          CARD GRID
+        ========================= */
+
+    .kementerian-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    /* =========================
+          CARD
+        ========================= */
+
+    .kementerian-card {
+      position: relative;
+      padding: 36px 24px 28px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(228, 228, 231, 0.8);
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .kementerian-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: radial-gradient(
+        circle at top right,
+        rgba(122, 154, 204, 0.08),
+        transparent 60%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .kementerian-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(74, 90, 141, 0.25);
+      box-shadow:
+        0 30px 60px rgba(74, 90, 141, 0.12),
+        0 10px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .kementerian-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-logo-wrapper {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 24px;
+      background: linear-gradient(
+        135deg,
+        rgba(74, 90, 141, 0.06),
+        rgba(122, 154, 204, 0.08)
+      );
+      transition: all 0.4s ease;
+    }
+
+    .kementerian-card:hover .card-logo-wrapper {
+      background: linear-gradient(
+        135deg,
+        rgba(74, 90, 141, 0.12),
+        rgba(122, 154, 204, 0.16)
+      );
+      transform: scale(1.08);
+    }
+
+    .card-logo-wrapper img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.06));
+      transition: filter 0.4s ease;
+    }
+
+    .kementerian-card:hover .card-logo-wrapper img {
+      filter: drop-shadow(0 8px 20px rgba(74, 90, 141, 0.15));
+    }
+
+    .card-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #a1a1aa;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .card-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #18181b;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease;
+    }
+
+    .kementerian-card:hover .card-name {
+      color: #4a5a8d;
+    }
+
+    .card-label {
+      font-size: 12px;
+      color: #a1a1aa;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+    }
+
+    /* Card link wrapper */
+    a.kementerian-card,
+    a.kementerian-card:link,
+    a.kementerian-card:visited,
+    a.kementerian-card:hover,
+    a.kementerian-card:active {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    /* Card number accent */
+    .card-number {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      font-size: 11px;
+      font-weight: 800;
+      color: rgba(74, 90, 141, 0.15);
+      letter-spacing: -0.02em;
+    }
+
+    .kementerian-card:hover .card-number {
+      color: rgba(74, 90, 141, 0.3);
+    }
+
+    /* =========================
+          ANIMATIONS
+        ========================= */
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Staggered entrance */
+    .kementerian-card {
+      animation: cardEntrance 0.6s ease both;
+    }
+
+    .kementerian-card:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+    .kementerian-card:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    .kementerian-card:nth-child(3) {
+      animation-delay: 0.15s;
+    }
+    .kementerian-card:nth-child(4) {
+      animation-delay: 0.2s;
+    }
+    .kementerian-card:nth-child(5) {
+      animation-delay: 0.25s;
+    }
+    .kementerian-card:nth-child(6) {
+      animation-delay: 0.3s;
+    }
+    .kementerian-card:nth-child(7) {
+      animation-delay: 0.35s;
+    }
+    .kementerian-card:nth-child(8) {
+      animation-delay: 0.4s;
+    }
+    .kementerian-card:nth-child(9) {
+      animation-delay: 0.45s;
+    }
+    .kementerian-card:nth-child(10) {
+      animation-delay: 0.5s;
+    }
+    .kementerian-card:nth-child(11) {
+      animation-delay: 0.55s;
+    }
+    .kementerian-card:nth-child(12) {
+      animation-delay: 0.6s;
+    }
+    .kementerian-card:nth-child(13) {
+      animation-delay: 0.65s;
+    }
+    .kementerian-card:nth-child(14) {
+      animation-delay: 0.7s;
+    }
+    .kementerian-card:nth-child(15) {
+      animation-delay: 0.75s;
+    }
+    .kementerian-card:nth-child(16) {
+      animation-delay: 0.8s;
+    }
+    .kementerian-card:nth-child(17) {
+      animation-delay: 0.85s;
+    }
+
+    @keyframes cardEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+          RESPONSIVE
+        ========================= */
+
+    @media (max-width: 1100px) {
+      .kementerian-section {
+        padding: 60px 30px;
+      }
+
+      .section-header::before {
+        width: 360px;
+        height: 360px;
+        top: -40px;
+      }
+
+      .kementerian-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .kementerian-section {
+        padding: 50px 24px;
+      }
+
+      .kementerian-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .kementerian-card {
+        padding: 28px 16px 22px;
+      }
+
+      .card-logo-wrapper {
+        width: 80px;
+        height: 80px;
+      }
+
+      .card-logo-wrapper img {
+        width: 56px;
+        height: 56px;
+      }
+
+      .card-category {
+        font-size: 9px;
+      }
+
+      .card-name {
+        font-size: 11px;
+      }
+
+      .section-desc {
+        font-size: 15px;
+      }
+
+      .section-header::before {
+        width: 280px;
+        height: 280px;
+        top: -30px;
+      }
+
+      .header-divider::before,
+      .header-divider::after {
+        width: 50px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .kementerian-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .kementerian-card {
+        padding: 22px 12px 18px;
+        border-radius: 18px;
+      }
+
+      .card-logo-wrapper {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 14px;
+      }
+
+      .card-logo-wrapper img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .card-category {
+        font-size: 8px;
+      }
+
+      .card-name {
+        font-size: 10px;
+      }
+
+      .card-label {
+        font-size: 10px;
+      }
+
+      .card-number {
+        font-size: 10px;
+        top: 10px;
+        right: 12px;
+      }
+
+      .section-header::before {
+        width: 200px;
+        height: 200px;
+        top: -20px;
+      }
+
+      .header-divider::before,
+      .header-divider::after {
+        width: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="kementerian-section">
+    <!-- Header -->
+    <div class="section-header">
+      <div class="section-badge">
+        <div class="badge-dot"></div>
+        <span>Struktur Kabinet</span>
+      </div>
+      <h2 class="section-title">
+        Biro & <span class="gradient">Kementerian</span>
+      </h2>
+      <p class="section-desc">
+        4 Biro dan 13 Kementerian yang bekerja sinergis untuk mewujudkan visi
+        dan misi BEM Unsoed.
+      </p>
+
+      <div class="header-divider">
+        <div class="divider-dot"></div>
+      </div>
+    </div>
+
+    <!-- Card Grid -->
+    <div class="kementerian-grid">
+      <!-- 1. Biro Kesekretariatan -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/biro-Kesekretariatan/"
+      >
+        <span class="card-number">01</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Kestari.png&w=100&h=100&fit=contain"
+            alt="Logo Kestari"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Biro</div>
+        <div class="card-name">Kesekretariatan</div>
+      </a>
+
+      <!-- 2. Biro Keuangan -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/biro-keuangan/"
+      >
+        <span class="card-number">02</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Keu.png&w=100&h=100&fit=contain"
+            alt="Logo Keu"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Biro</div>
+        <div class="card-name">Keuangan</div>
+      </a>
+
+      <!-- 3. Biro Pengendali dan Penjamin Mutu -->
+      <a class="kementerian-card" href="https://apps.bem-unsoed.com/biro-ppm/">
+        <span class="card-number">03</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PI.png&w=100&h=100&fit=contain"
+            alt="Logo PI"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Biro</div>
+        <div class="card-name">Pengendali dan Penjamin Mutu</div>
+      </a>
+
+      <!-- 4. Biro Pengembangan Sumber Daya Anggota -->
+      <a class="kementerian-card" href="https://apps.bem-unsoed.com/biro-psda/">
+        <span class="card-number">04</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PSDA.png&w=100&h=100&fit=contain"
+            alt="Logo PSDA"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Biro</div>
+        <div class="card-name">Pengembangan Sumber Daya Anggota</div>
+      </a>
+
+      <!-- 5. Kementerian Luar Negeri -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementrian-lugri/"
+      >
+        <span class="card-number">05</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Lugri.png&w=100&h=100&fit=contain"
+            alt="Logo Lugri"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Luar Negeri</div>
+      </a>
+
+      <!-- 6. Kementerian Dalam Negeri -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementrian-dagri/"
+      >
+        <span class="card-number">06</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Dagri.png&w=100&h=100&fit=contain"
+            alt="Logo Dagri"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Dalam Negeri</div>
+      </a>
+
+      <!-- 7. Kementerian Pengembangan Sumber Daya Mahasiswa -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementerianpsdm/"
+      >
+        <span class="card-number">07</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PSDM.png&w=100&h=100&fit=contain"
+            alt="Logo PSDM"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Pengembangan Sumber Daya Mahasiswa</div>
+      </a>
+
+      <!-- 8. Kementerian Prestasi & Inovasi -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementerianpi/"
+      >
+        <span class="card-number">08</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Pempu.png&w=100&h=100&fit=contain"
+            alt="Logo Pempu"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Prestasi & Inovasi</div>
+      </a>
+
+      <!-- 9. Kementerian Seni & Olahraga -->
+      <a class="kementerian-card" href="https://apps.bem-unsoed.com/seniora/">
+        <span class="card-number">09</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Seniora.png&w=100&h=100&fit=contain"
+            alt="Logo Seniora"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Seni & Olahraga</div>
+      </a>
+
+      <!-- 10. Kementerian Advokasi Kesejahteraan Mahasiswa -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementerianadkesma/"
+      >
+        <span class="card-number">10</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/adkesma.png&w=100&h=100&fit=contain"
+            alt="Logo Adkesma"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Advokasi Kesejahteraan Mahasiswa</div>
+      </a>
+
+      <!-- 11. Kementerian Aksi & Propaganda -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementerianakspro/"
+      >
+        <span class="card-number">11</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Akspro.png&w=100&h=100&fit=contain"
+            alt="Logo Akspro"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Aksi & Propaganda</div>
+      </a>
+
+      <!-- 12. Kementerian Analisis Isu Strategis -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementeriananstrat/"
+      >
+        <span class="card-number">12</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Anstrat.png&w=100&h=100&fit=contain"
+            alt="Logo Anstrat"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Analisis Isu Strategis</div>
+      </a>
+
+      <!-- 13. Kementerian Pemberdayaan Perempuan -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementerianpempu/"
+      >
+        <span class="card-number">13</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PPM.png&w=100&h=100&fit=contain"
+            alt="Logo PPM"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Pemberdayaan Perempuan</div>
+      </a>
+
+      <!-- 14. Kementerian Riset dan Data -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementerianrisdat/"
+      >
+        <span class="card-number">14</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Risdat.png&w=100&h=100&fit=contain"
+            alt="Logo Risdat"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Riset dan Data</div>
+      </a>
+
+      <!-- 15. Kementerian Media Komunikasi & Informasi -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementerianmedkom/"
+      >
+        <span class="card-number">15</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Medkom.png&w=100&h=100&fit=contain"
+            alt="Logo Medkom"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Media Komunikasi & Informasi</div>
+      </a>
+
+      <!-- 16. Kementerian Media Kreatif & Aplikatif -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementerianmedkraf/"
+      >
+        <span class="card-number">16</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Medkraf.png&w=100&h=100&fit=contain"
+            alt="Logo Medkraf"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Media Kreatif & Aplikatif</div>
+      </a>
+
+      <!-- 17. Kementerian Pengabdian Masyarakat -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementerianpengmas/"
+      >
+        <span class="card-number">17</span>
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Pengmas.png&w=100&h=100&fit=contain"
+            alt="Logo Pengmas"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Pengabdian Masyarakat</div>
+      </a>
+    </div>
+  </section>
+</body>
