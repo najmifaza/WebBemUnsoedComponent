@@ -1,0 +1,406 @@
+<style>
+  .manual-widget a,
+  .manual-widget a:hover,
+  .manual-widget a *,
+  .manual-widget a:hover * {
+    text-decoration: none !important;
+  }
+
+  .manual-widget {
+    background:
+      radial-gradient(
+        circle at top right,
+        rgba(122, 154, 204, 0.15),
+        transparent 70%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.95)
+      );
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 36px;
+    padding: 36px 32px;
+    box-shadow:
+      0 40px 80px rgba(0, 0, 0, 0.08),
+      inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    font-family: "Inter", sans-serif;
+    color: #09090b;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  .manual-widget::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, #4a5a8d, #7a9acc);
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .manual-content-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+
+  .manual-header {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 28px;
+  }
+
+  .manual-badge {
+    background: linear-gradient(135deg, #4a5a8d, #6c84b8);
+    color: white;
+    width: 86px;
+    height: 86px;
+    border-radius: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    line-height: 1.1;
+    box-shadow:
+      0 16px 32px rgba(74, 90, 141, 0.35),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    transform: rotate(-4deg);
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .manual-widget:hover .manual-badge {
+    transform: rotate(0deg) scale(1.05);
+  }
+
+  .manual-badge span:first-child {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    margin-bottom: 2px;
+  }
+
+  .manual-badge span:last-child {
+    font-size: 32px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .manual-title-area h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a202c;
+    margin: 0 0 6px 0;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+  }
+
+  .manual-title-area p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .manual-desc {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 20px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #475569;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+  }
+
+  .manual-desc::before {
+    content: "“";
+    position: absolute;
+    top: 4px;
+    left: 12px;
+    font-size: 50px;
+    color: #4a5a8d;
+    opacity: 0.15;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  .manual-bento {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .bento-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(228, 228, 231, 0.8);
+    border-radius: 24px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+  }
+
+  .bento-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px rgba(74, 90, 141, 0.15);
+    border-color: rgba(74, 90, 141, 0.4);
+    background: #ffffff;
+  }
+
+  .bento-card-main {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff 0%, #f4f7fc 100%);
+    padding: 24px;
+  }
+
+  .bento-icon {
+    width: 54px;
+    height: 54px;
+    background: rgba(74, 90, 141, 0.08);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    color: #4a5a8d;
+    transition: 0.4s ease;
+  }
+
+  .bento-card:hover .bento-icon {
+    background: rgba(74, 90, 141, 0.15);
+    transform: scale(1.08) rotate(5deg);
+  }
+
+  .bento-card-main .bento-icon {
+    margin-bottom: 0;
+    margin-right: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 12px 24px rgba(74, 90, 141, 0.12);
+  }
+
+  .bento-card-main:hover .bento-icon {
+    transform: scale(1.08) rotate(0deg);
+  }
+
+  .bento-card-main .bento-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+  }
+
+  .bento-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .bento-text {
+    flex-grow: 1;
+  }
+
+  .bento-text h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 10px 0;
+    line-height: 1.35;
+  }
+
+  .bento-card-main .bento-text h4 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .bento-link {
+    font-size: 13px;
+    font-weight: 700;
+    color: #4a5a8d;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s ease;
+    background: rgba(74, 90, 141, 0.08);
+    padding: 6px 14px;
+    border-radius: 999px;
+    width: fit-content;
+  }
+
+  .bento-card:hover .bento-link {
+    gap: 10px;
+    background: #4a5a8d;
+    color: white;
+  }
+
+  .bento-link svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.5;
+    transition: 0.3s ease;
+  }
+
+  @media (max-width: 600px) {
+    .manual-bento {
+      grid-template-columns: 1fr;
+    }
+    .bento-card-main {
+      grid-column: span 1;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .bento-card-main .bento-icon {
+      margin-bottom: 16px;
+      margin-right: 0;
+    }
+  }
+</style>
+
+<div class="manual-widget">
+  <div class="manual-content-wrapper">
+    <div class="manual-header">
+      <div class="manual-badge">
+        <span>Manual</span>
+        <span>0.1</span>
+      </div>
+      <div class="manual-title-area">
+        <h2>Pedoman Administrasi Eksternal</h2>
+        <p>Biro Kesekretariatan BEM Unsoed</p>
+      </div>
+    </div>
+
+    <div class="manual-desc">
+      Pedoman Umum Administrasi Eksternal (MANUAL) adalah salah satu program
+      kerja dari Biro Kesekretariatan BEM Unsoed yang isinya mencakup tata cara
+      peminjaman fasilitas-fasilitas umum milik Universitas Jenderal Soedirman.
+    </div>
+
+    <div class="manual-bento">
+      <!-- Main Bento Card -->
+      <a
+        href="https://apps.bem-unsoed.com/sop-unsoed/"
+        class="bento-card bento-card-main"
+      >
+        <div class="bento-icon">
+          <img
+            src="https://apps.bem-unsoed.com/wp-content/uploads/2026/06/bem.png"
+            alt="BEM Unsoed"
+          />
+        </div>
+        <div class="bento-text">
+          <h4>BEM Universitas Jenderal Soedirman</h4>
+          <span class="bento-link">
+            Detail
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Sub Bento Card 1 -->
+      <a href="https://apps.bem-unsoed.com/manual-1/" class="bento-card">
+        <div class="bento-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z"
+            />
+          </svg>
+        </div>
+        <div class="bento-text">
+          <h4>Universitas Jenderal Soedirman</h4>
+          <span class="bento-link">
+            Detail
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Sub Bento Card 2 -->
+      <a href="https://apps.bem-unsoed.com/manual-3/" class="bento-card">
+        <div class="bento-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"
+            />
+          </svg>
+        </div>
+        <div class="bento-text">
+          <h4>Fakultas - Fakultas</h4>
+          <span class="bento-link">
+            Detail
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

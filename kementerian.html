@@ -83,15 +83,15 @@
     }
 
     .section-badge .badge-dot {
-      width: 7px;
-      height: 7px;
+      width: 9px;
+      height: 9px;
       border-radius: 999px;
       background: #4a5a8d;
       animation: pulse 2s infinite;
     }
 
     .section-badge span {
-      font-size: 10px;
+      font-size: 14px !important;
       font-weight: 700;
       letter-spacing: 0.3px;
       color: #4a5a8d;
@@ -100,7 +100,7 @@
     .section-title {
       position: relative;
       z-index: 1;
-      font-size: clamp(34px, 5.5vw, 56px);
+      font-size: clamp(48px, 7vw, 72px) !important;
       font-weight: 800;
       letter-spacing: -0.04em;
       line-height: 1.08;
@@ -117,7 +117,7 @@
     .section-desc {
       position: relative;
       z-index: 1;
-      font-size: 17px;
+      font-size: 22px !important;
       line-height: 1.8;
       color: #6b7280;
       max-width: 620px;
@@ -180,8 +180,9 @@
 
     .kementerian-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px 20px;
+      padding-top: 10px;
     }
 
     /* =========================
@@ -190,135 +191,147 @@
 
     .kementerian-card {
       position: relative;
-      padding: 36px 24px 28px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(228, 228, 231, 0.8);
+      margin-top: 130px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 4px;
+      padding: 100px 16px 22px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid #e4e4e7;
+      border-top: none;
+      box-shadow:
+        0 4px 16px rgba(74, 90, 141, 0.08),
+        0 2px 4px rgba(74, 90, 141, 0.04);
       text-align: center;
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      overflow: hidden;
+      text-decoration: none !important;
+      color: inherit;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: visible;
       cursor: pointer;
     }
 
+    .kementerian-card:link,
+    .kementerian-card:visited,
+    .kementerian-card:hover,
+    .kementerian-card:active,
+    .kementerian-card:focus {
+      text-decoration: none !important;
+      color: inherit;
+    }
+
+    /* Bottom accent line — hidden, revealed on hover */
     .kementerian-card::before {
       content: "";
       position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      background: radial-gradient(
-        circle at top right,
-        rgba(122, 154, 204, 0.08),
-        transparent 60%
-      );
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .kementerian-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(74, 90, 141, 0.25);
-      box-shadow:
-        0 30px 60px rgba(74, 90, 141, 0.12),
-        0 10px 20px rgba(0, 0, 0, 0.04);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #4a5a8d, #7a9acc);
+      border-radius: 3px 3px 0 0;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 3;
     }
 
     .kementerian-card:hover::before {
-      opacity: 1;
+      width: 55%;
     }
 
+    .kementerian-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(74, 90, 141, 0.35);
+      box-shadow:
+        0 16px 48px rgba(74, 90, 141, 0.22),
+        0 8px 20px rgba(74, 90, 141, 0.14),
+        0 4px 8px rgba(74, 90, 141, 0.08);
+    }
+
+    /* =========================
+          LOGO (pops above card)
+        ========================= */
+
     .card-logo-wrapper {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 20px;
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      width: 240px;
+      height: 240px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 24px;
-      background: linear-gradient(
-        135deg,
-        rgba(74, 90, 141, 0.06),
-        rgba(122, 154, 204, 0.08)
-      );
-      transition: all 0.4s ease;
+      flex-shrink: 0;
+      transition: all 0.35s ease;
     }
 
     .kementerian-card:hover .card-logo-wrapper {
-      background: linear-gradient(
-        135deg,
-        rgba(74, 90, 141, 0.12),
-        rgba(122, 154, 204, 0.16)
-      );
-      transform: scale(1.08);
+      transform: translateX(-50%) scale(1.06);
     }
 
     .card-logo-wrapper img {
-      width: 70px;
-      height: 70px;
+      width: 150px;
+      height: 150px;
       object-fit: contain;
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.06));
-      transition: filter 0.4s ease;
+      transition: transform 0.35s ease;
     }
 
     .kementerian-card:hover .card-logo-wrapper img {
-      filter: drop-shadow(0 8px 20px rgba(74, 90, 141, 0.15));
+      transform: scale(1.06);
     }
 
+    /* =========================
+          TEXT
+        ========================= */
+
     .card-category {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      position: relative;
+      z-index: 1;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       color: #a1a1aa;
       text-transform: uppercase;
-      margin-bottom: 4px;
     }
 
     .card-name {
-      font-size: 13px;
+      position: relative;
+      z-index: 1;
+      font-size: 21px;
       font-weight: 700;
       color: #18181b;
-      line-height: 1.35;
+      line-height: 1.3;
       letter-spacing: -0.01em;
       transition: color 0.3s ease;
+      max-width: 100%;
     }
 
     .kementerian-card:hover .card-name {
       color: #4a5a8d;
     }
 
-    .card-label {
-      font-size: 12px;
-      color: #a1a1aa;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      margin-top: 2px;
-    }
+    /* =========================
+          NUMBER ACCENT
+        ========================= */
 
-    /* Card link wrapper */
-    a.kementerian-card,
-    a.kementerian-card:link,
-    a.kementerian-card:visited,
-    a.kementerian-card:hover,
-    a.kementerian-card:active {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    /* Card number accent */
     .card-number {
       position: absolute;
       top: 14px;
-      right: 18px;
-      font-size: 11px;
-      font-weight: 800;
-      color: rgba(74, 90, 141, 0.15);
+      left: 16px;
+      z-index: 1;
+      font-size: 17px;
+      font-weight: 700;
+      color: #e4e4e7;
       letter-spacing: -0.02em;
+      transition: color 0.3s ease;
     }
 
     .kementerian-card:hover .card-number {
-      color: rgba(74, 90, 141, 0.3);
+      color: rgba(74, 90, 141, 0.18);
     }
 
     /* =========================
@@ -424,7 +437,6 @@
       }
 
       .kementerian-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 18px;
       }
     }
@@ -435,34 +447,36 @@
       }
 
       .kementerian-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 14px;
       }
 
       .kementerian-card {
-        padding: 28px 16px 22px;
+        margin-top: 100px;
+        padding: 75px 10px 16px;
       }
 
       .card-logo-wrapper {
-        width: 80px;
-        height: 80px;
+        top: -90px;
+        width: 180px;
+        height: 180px;
       }
 
       .card-logo-wrapper img {
-        width: 56px;
-        height: 56px;
+        width: 115px;
+        height: 115px;
       }
 
       .card-category {
-        font-size: 9px;
+        font-size: 14px;
       }
 
       .card-name {
-        font-size: 11px;
+        font-size: 17px;
       }
 
       .section-desc {
-        font-size: 15px;
+        font-size: 18px;
       }
 
       .section-header::before {
@@ -484,37 +498,34 @@
       }
 
       .kementerian-card {
-        padding: 22px 12px 18px;
-        border-radius: 18px;
+        margin-top: 85px;
+        padding: 65px 10px 14px;
+        border-radius: 16px;
       }
 
       .card-logo-wrapper {
-        width: 68px;
-        height: 68px;
-        margin-bottom: 14px;
+        top: -75px;
+        width: 150px;
+        height: 150px;
       }
 
       .card-logo-wrapper img {
-        width: 48px;
-        height: 48px;
+        width: 95px;
+        height: 95px;
       }
 
       .card-category {
-        font-size: 8px;
+        font-size: 12px;
       }
 
       .card-name {
-        font-size: 10px;
-      }
-
-      .card-label {
-        font-size: 10px;
+        font-size: 15px;
       }
 
       .card-number {
-        font-size: 10px;
+        font-size: 15px;
         top: 10px;
-        right: 12px;
+        left: 12px;
       }
 
       .section-header::before {
@@ -559,10 +570,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/biro-Kesekretariatan/"
       >
-        <span class="card-number">01</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Kestari.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Kestari.png&w=200&h=200&fit=contain"
             alt="Logo Kestari"
             loading="lazy"
             decoding="async"
@@ -577,10 +587,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/biro-keuangan/"
       >
-        <span class="card-number">02</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Keu.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Keu.png&w=200&h=200&fit=contain"
             alt="Logo Keu"
             loading="lazy"
             decoding="async"
@@ -592,10 +601,9 @@
 
       <!-- 3. Biro Pengendali dan Penjamin Mutu -->
       <a class="kementerian-card" href="https://apps.bem-unsoed.com/biro-ppm/">
-        <span class="card-number">03</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PI.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PI.png&w=200&h=200&fit=contain"
             alt="Logo PI"
             loading="lazy"
             decoding="async"
@@ -607,10 +615,9 @@
 
       <!-- 4. Biro Pengembangan Sumber Daya Anggota -->
       <a class="kementerian-card" href="https://apps.bem-unsoed.com/biro-psda/">
-        <span class="card-number">04</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PSDA.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PSDA.png&w=200&h=200&fit=contain"
             alt="Logo PSDA"
             loading="lazy"
             decoding="async"
@@ -625,10 +632,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementrian-lugri/"
       >
-        <span class="card-number">05</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Lugri.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Lugri.png&w=200&h=200&fit=contain"
             alt="Logo Lugri"
             loading="lazy"
             decoding="async"
@@ -643,10 +649,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementrian-dagri/"
       >
-        <span class="card-number">06</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Dagri.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Dagri.png&w=200&h=200&fit=contain"
             alt="Logo Dagri"
             loading="lazy"
             decoding="async"
@@ -661,10 +666,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementerianpsdm/"
       >
-        <span class="card-number">07</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PSDM.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PSDM.png&w=200&h=200&fit=contain"
             alt="Logo PSDM"
             loading="lazy"
             decoding="async"
@@ -679,10 +683,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementerianpi/"
       >
-        <span class="card-number">08</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Pempu.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Pempu.png&w=200&h=200&fit=contain"
             alt="Logo Pempu"
             loading="lazy"
             decoding="async"
@@ -694,10 +697,9 @@
 
       <!-- 9. Kementerian Seni & Olahraga -->
       <a class="kementerian-card" href="https://apps.bem-unsoed.com/seniora/">
-        <span class="card-number">09</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Seniora.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Seniora.png&w=200&h=200&fit=contain"
             alt="Logo Seniora"
             loading="lazy"
             decoding="async"
@@ -706,16 +708,30 @@
         <div class="card-category">Kementerian</div>
         <div class="card-name">Seni & Olahraga</div>
       </a>
-
+      <!-- 17. Kementerian Pengabdian Masyarakat -->
+      <a
+        class="kementerian-card"
+        href="https://apps.bem-unsoed.com/kementerianpengmas/"
+      >
+        <div class="card-logo-wrapper">
+          <img
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Pengmas.png&w=200&h=200&fit=contain"
+            alt="Logo Pengmas"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="card-category">Kementerian</div>
+        <div class="card-name">Pengabdian Masyarakat</div>
+      </a>
       <!-- 10. Kementerian Advokasi Kesejahteraan Mahasiswa -->
       <a
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementerianadkesma/"
       >
-        <span class="card-number">10</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/adkesma.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/adkesma.png&w=200&h=200&fit=contain"
             alt="Logo Adkesma"
             loading="lazy"
             decoding="async"
@@ -730,10 +746,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementerianakspro/"
       >
-        <span class="card-number">11</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Akspro.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Akspro.png&w=200&h=200&fit=contain"
             alt="Logo Akspro"
             loading="lazy"
             decoding="async"
@@ -748,10 +763,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementeriananstrat/"
       >
-        <span class="card-number">12</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Anstrat.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Anstrat.png&w=200&h=200&fit=contain"
             alt="Logo Anstrat"
             loading="lazy"
             decoding="async"
@@ -766,10 +780,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementerianpempu/"
       >
-        <span class="card-number">13</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PPM.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/PPM.png&w=200&h=200&fit=contain"
             alt="Logo PPM"
             loading="lazy"
             decoding="async"
@@ -784,10 +797,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementerianrisdat/"
       >
-        <span class="card-number">14</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Risdat.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Risdat.png&w=200&h=200&fit=contain"
             alt="Logo Risdat"
             loading="lazy"
             decoding="async"
@@ -802,10 +814,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementerianmedkom/"
       >
-        <span class="card-number">15</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Medkom.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Medkom.png&w=200&h=200&fit=contain"
             alt="Logo Medkom"
             loading="lazy"
             decoding="async"
@@ -820,10 +831,9 @@
         class="kementerian-card"
         href="https://apps.bem-unsoed.com/kementerianmedkraf/"
       >
-        <span class="card-number">16</span>
         <div class="card-logo-wrapper">
           <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Medkraf.png&w=100&h=100&fit=contain"
+            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Medkraf.png&w=200&h=200&fit=contain"
             alt="Logo Medkraf"
             loading="lazy"
             decoding="async"
@@ -831,24 +841,6 @@
         </div>
         <div class="card-category">Kementerian</div>
         <div class="card-name">Media Kreatif & Aplikatif</div>
-      </a>
-
-      <!-- 17. Kementerian Pengabdian Masyarakat -->
-      <a
-        class="kementerian-card"
-        href="https://apps.bem-unsoed.com/kementerianpengmas/"
-      >
-        <span class="card-number">17</span>
-        <div class="card-logo-wrapper">
-          <img
-            src="https://images.weserv.nl/?url=raw.githubusercontent.com/nakoms-26/AssetLogoWeb/main/Logo%20Kementerian%20Warna/Pengmas.png&w=100&h=100&fit=contain"
-            alt="Logo Pengmas"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <div class="card-category">Kementerian</div>
-        <div class="card-name">Pengabdian Masyarakat</div>
       </a>
     </div>
   </section>
